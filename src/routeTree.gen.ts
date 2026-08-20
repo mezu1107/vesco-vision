@@ -16,6 +16,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as OemRouteImport } from './routes/oem'
 import { Route as QualityRouteImport } from './routes/quality'
+import { Route as ResearchRouteImport } from './routes/research'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
@@ -57,6 +58,11 @@ const QualityRoute = QualityRouteImport.update({
   path: '/quality',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/insights': typeof InsightsRoute
   '/oem': typeof OemRoute
   '/quality': typeof QualityRoute
+  '/research': typeof ResearchRoute
   '/resources': typeof ResourcesRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/technology/$slug': typeof TechnologySlugRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/insights': typeof InsightsRoute
   '/oem': typeof OemRoute
   '/quality': typeof QualityRoute
+  '/research': typeof ResearchRoute
   '/resources': typeof ResourcesRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/technology/$slug': typeof TechnologySlugRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/insights': typeof InsightsRoute
   '/oem': typeof OemRoute
   '/quality': typeof QualityRoute
+  '/research': typeof ResearchRoute
   '/resources': typeof ResourcesRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/technology/$slug': typeof TechnologySlugRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/oem'
     | '/quality'
+    | '/research'
     | '/resources'
     | '/products/$slug'
     | '/technology/$slug'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/oem'
     | '/quality'
+    | '/research'
     | '/resources'
     | '/products/$slug'
     | '/technology/$slug'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/oem'
     | '/quality'
+    | '/research'
     | '/resources'
     | '/products/$slug'
     | '/technology/$slug'
@@ -179,6 +191,7 @@ export interface RootRouteChildren {
   InsightsRoute: typeof InsightsRoute
   OemRoute: typeof OemRoute
   QualityRoute: typeof QualityRoute
+  ResearchRoute: typeof ResearchRoute
   ResourcesRoute: typeof ResourcesRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
   TechnologySlugRoute: typeof TechnologySlugRoute
@@ -237,6 +250,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QualityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources': {
       id: '/resources'
       path: '/resources'
@@ -283,6 +303,7 @@ const rootRouteChildren: RootRouteChildren = {
   InsightsRoute: InsightsRoute,
   OemRoute: OemRoute,
   QualityRoute: QualityRoute,
+  ResearchRoute: ResearchRoute,
   ResourcesRoute: ResourcesRoute,
   ProductsSlugRoute: ProductsSlugRoute,
   TechnologySlugRoute: TechnologySlugRoute,
