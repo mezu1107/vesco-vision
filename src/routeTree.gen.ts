@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as OemRouteImport } from './routes/oem'
 import { Route as QualityRouteImport } from './routes/quality'
@@ -34,6 +35,11 @@ const AboutRoute = AboutRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InsightsRoute = InsightsRouteImport.update({
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/insights': typeof InsightsRoute
   '/oem': typeof OemRoute
   '/quality': typeof QualityRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/insights': typeof InsightsRoute
   '/oem': typeof OemRoute
   '/quality': typeof QualityRoute
@@ -108,6 +116,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/insights': typeof InsightsRoute
   '/oem': typeof OemRoute
   '/quality': typeof QualityRoute
@@ -123,6 +132,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/faq'
     | '/insights'
     | '/oem'
     | '/quality'
@@ -136,6 +146,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/faq'
     | '/insights'
     | '/oem'
     | '/quality'
@@ -149,6 +160,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/faq'
     | '/insights'
     | '/oem'
     | '/quality'
@@ -163,6 +175,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
   InsightsRoute: typeof InsightsRoute
   OemRoute: typeof OemRoute
   QualityRoute: typeof QualityRoute
@@ -194,6 +207,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/insights': {
@@ -259,6 +279,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
   InsightsRoute: InsightsRoute,
   OemRoute: OemRoute,
   QualityRoute: QualityRoute,
