@@ -145,7 +145,7 @@ export function Header() {
                         : "pointer-events-none -translate-y-1 opacity-0"
                     }`}
                   >
-                    <div className="w-[320px] border border-white/10 bg-navy-deep/98 p-2 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.8)] backdrop-blur-md">
+                    <div className="max-h-[70vh] w-[320px] overflow-y-auto border border-white/10 bg-navy-deep/98 p-2 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.8)] backdrop-blur-md">
                       <span className="absolute top-[9px] left-6 h-2 w-2 rotate-45 border-t border-l border-white/10 bg-navy-deep" />
                       {item.children.map((c) => (
                         <Link
@@ -158,7 +158,7 @@ export function Header() {
                             {c.label}
                           </span>
                           {c.desc ? (
-                            <span className="mt-0.5 line-clamp-1 block text-[0.72rem] text-white/40">
+                            <span className="mt-0.5 block truncate text-[0.72rem] text-white/40">
                               {c.desc}
                             </span>
                           ) : null}
