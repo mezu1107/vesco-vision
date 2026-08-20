@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as OemRouteImport } from './routes/oem'
+import { Route as QualityRouteImport } from './routes/quality'
+import { Route as ProductsIndexRouteImport } from './routes/products.index'
+import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
+import { Route as TechnologyIndexRouteImport } from './routes/technology.index'
+import { Route as TechnologySlugRouteImport } from './routes/technology.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OemRoute = OemRouteImport.update({
+  id: '/oem',
+  path: '/oem',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QualityRoute = QualityRouteImport.update({
+  id: '/quality',
+  path: '/quality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsIndexRoute = ProductsIndexRouteImport.update({
+  id: '/products/',
+  path: '/products/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsSlugRoute = ProductsSlugRouteImport.update({
+  id: '/products/$slug',
+  path: '/products/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechnologyIndexRoute = TechnologyIndexRouteImport.update({
+  id: '/technology/',
+  path: '/technology/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechnologySlugRoute = TechnologySlugRouteImport.update({
+  id: '/technology/$slug',
+  path: '/technology/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/oem': typeof OemRoute
+  '/quality': typeof QualityRoute
+  '/products/$slug': typeof ProductsSlugRoute
+  '/technology/$slug': typeof TechnologySlugRoute
+  '/products/': typeof ProductsIndexRoute
+  '/technology/': typeof TechnologyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/oem': typeof OemRoute
+  '/quality': typeof QualityRoute
+  '/products/$slug': typeof ProductsSlugRoute
+  '/technology/$slug': typeof TechnologySlugRoute
+  '/products': typeof ProductsIndexRoute
+  '/technology': typeof TechnologyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/oem': typeof OemRoute
+  '/quality': typeof QualityRoute
+  '/products/$slug': typeof ProductsSlugRoute
+  '/technology/$slug': typeof TechnologySlugRoute
+  '/products/': typeof ProductsIndexRoute
+  '/technology/': typeof TechnologyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/oem'
+    | '/quality'
+    | '/products/$slug'
+    | '/technology/$slug'
+    | '/products/'
+    | '/technology/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/oem'
+    | '/quality'
+    | '/products/$slug'
+    | '/technology/$slug'
+    | '/products'
+    | '/technology'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/oem'
+    | '/quality'
+    | '/products/$slug'
+    | '/technology/$slug'
+    | '/products/'
+    | '/technology/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  OemRoute: typeof OemRoute
+  QualityRoute: typeof QualityRoute
+  ProductsSlugRoute: typeof ProductsSlugRoute
+  TechnologySlugRoute: typeof TechnologySlugRoute
+  ProductsIndexRoute: typeof ProductsIndexRoute
+  TechnologyIndexRoute: typeof TechnologyIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oem': {
+      id: '/oem'
+      path: '/oem'
+      fullPath: '/oem'
+      preLoaderRoute: typeof OemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quality': {
+      id: '/quality'
+      path: '/quality'
+      fullPath: '/quality'
+      preLoaderRoute: typeof QualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/': {
+      id: '/products/'
+      path: '/products'
+      fullPath: '/products/'
+      preLoaderRoute: typeof ProductsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/$slug': {
+      id: '/products/$slug'
+      path: '/products/$slug'
+      fullPath: '/products/$slug'
+      preLoaderRoute: typeof ProductsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technology/': {
+      id: '/technology/'
+      path: '/technology'
+      fullPath: '/technology/'
+      preLoaderRoute: typeof TechnologyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technology/$slug': {
+      id: '/technology/$slug'
+      path: '/technology/$slug'
+      fullPath: '/technology/$slug'
+      preLoaderRoute: typeof TechnologySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  OemRoute: OemRoute,
+  QualityRoute: QualityRoute,
+  ProductsSlugRoute: ProductsSlugRoute,
+  TechnologySlugRoute: TechnologySlugRoute,
+  ProductsIndexRoute: ProductsIndexRoute,
+  TechnologyIndexRoute: TechnologyIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

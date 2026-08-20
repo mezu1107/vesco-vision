@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading } from "@/components/site/primitives";
 
-export const Route = createFileRoute("/technology")({
+export const Route = createFileRoute("/technology/")({
   head: () => ({
     meta: [
       { title: "Technology Platforms — Vesco Science" },
