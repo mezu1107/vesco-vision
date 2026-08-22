@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FacilityRouteImport } from './routes/facility'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as OemRouteImport } from './routes/oem'
@@ -36,6 +37,11 @@ const AboutRoute = AboutRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacilityRoute = FacilityRouteImport.update({
+  id: '/facility',
+  path: '/facility',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/facility': typeof FacilityRoute
   '/faq': typeof FaqRoute
   '/insights': typeof InsightsRoute
   '/oem': typeof OemRoute
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/facility': typeof FacilityRoute
   '/faq': typeof FaqRoute
   '/insights': typeof InsightsRoute
   '/oem': typeof OemRoute
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/facility': typeof FacilityRoute
   '/faq': typeof FaqRoute
   '/insights': typeof InsightsRoute
   '/oem': typeof OemRoute
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/facility'
     | '/faq'
     | '/insights'
     | '/oem'
@@ -156,6 +166,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/facility'
     | '/faq'
     | '/insights'
     | '/oem'
@@ -171,6 +182,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/facility'
     | '/faq'
     | '/insights'
     | '/oem'
@@ -187,6 +199,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  FacilityRoute: typeof FacilityRoute
   FaqRoute: typeof FaqRoute
   InsightsRoute: typeof InsightsRoute
   OemRoute: typeof OemRoute
@@ -220,6 +233,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/facility': {
+      id: '/facility'
+      path: '/facility'
+      fullPath: '/facility'
+      preLoaderRoute: typeof FacilityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -299,6 +319,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  FacilityRoute: FacilityRoute,
   FaqRoute: FaqRoute,
   InsightsRoute: InsightsRoute,
   OemRoute: OemRoute,
